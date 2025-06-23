@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 247591322}
   - component: {fileID: 247591324}
   - component: {fileID: 247591323}
+  - component: {fileID: 247591325}
   m_Layer: 0
   m_Name: ParametersWindow
   m_TagString: Untagged
@@ -383,6 +384,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247591321}
   m_CullTransparentMesh: 1
+--- !u!114 &247591325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247591321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c6d6a11cdfa114794b430b40b962a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parametersField: {fileID: 279690841}
+  _next: {fileID: 2021051087}
+  _previous: {fileID: 2038757752}
+  _maxPages: 2
+  _format: '{0}: {1}/{2}'
+  _planetField: {fileID: 679540388}
+  _replace: {fileID: 733263428}
 --- !u!1 &279690839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPart: {fileID: 0}
   <Parts>k__BackingField:
   - {fileID: 11400000, guid: 21d4d5d7166d2bc4ca94fe32cd45a2e4, type: 2}
   _image: {fileID: 710213937}
@@ -1231,7 +1250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPart: {fileID: 0}
   <Parts>k__BackingField:
   - {fileID: 11400000, guid: 7ddda4709e1cf084cb241b097c4ffe2d, type: 2}
   _image: {fileID: 725040756}
@@ -1790,7 +1808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPart: {fileID: 0}
   <Parts>k__BackingField:
   - {fileID: 11400000, guid: 7895fe040b59ec04f8beb0919bc7285b, type: 2}
   _image: {fileID: 1521534946}
