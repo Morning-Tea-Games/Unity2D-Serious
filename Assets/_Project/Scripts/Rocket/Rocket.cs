@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using ParameterSystem;
-using UnityEngine;
 
 namespace Rocket
 {
@@ -11,11 +10,6 @@ namespace Rocket
         public Rocket(RocketPartSO[] parts)
         {
             Parts = parts;
-            var test = CalculateParameters();
-            foreach (var item in test)
-            {
-                Debug.Log(item.Name + " = " + item.Value);
-            }
         }
 
         public Parameter[] CalculateParameters()
