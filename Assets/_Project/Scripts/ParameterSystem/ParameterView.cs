@@ -1,76 +1,32 @@
-using System.Text;
-using Rocket;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ParameterSystem
+public class ParameterView : MonoBehaviour
 {
-    public class ParametrView : MonoBehaviour
+    [SerializeField] private Image _bar;
+    [SerializeField] private TMP_Text _value;
+    [SerializeField] private string _format;
+
+    public void Display(string name, float current, float target)
     {
-        [SerializeField] private TMP_Text _parametersField;
-        [SerializeField] private Button _next;
-        [SerializeField] private Button _previous;
-        [SerializeField] private int _maxPages;
-        [SerializeField] private string _format;
+        string state;
+        float v = current / target * 100f;
+        _bar.fillAmount = current / target;
 
-        [SerializeField] private TMP_Text _planetField;
-        [SerializeField] private Button _replace;
-
-        [SerializeField] private RocketBuilder _builder;
-
-        private void OnEnable()
+        if (v <= 33f)
         {
-            RocketInteractor.OnChanged += OnInteractorChanged;
-            _next.onClick.AddListener(NextPage);
-            _previous.onClick.AddListener(PreviousPage);
+            state = "плохо";
+        }
+        else if (v > 33f && v <= 66f)
+        {
+            state = "риск";
+        }
+        else
+        {
+            state = "оптимально";
         }
 
-        private void OnDisable()
-        {
-            RocketInteractor.OnChanged -= OnInteractorChanged;
-            _next.onClick.RemoveListener(NextPage);
-            _previous.onClick.RemoveListener(PreviousPage);
-        }
-
-        private void OnInteractorChanged(RocketPartSO part)
-        {
-            var rocket = _builder.Build();
-            var parameters = rocket.CalculateParameters();
-
-            if (parameters == null)
-            {
-                return;
-            }
-
-            StringBuilder sbuilder = new();
-
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                sbuilder.AppendLine(string.Format(_format, parameters[i].Name, parameters[i].Value, 0)); //TODO: Заменить 0 на цель для планеты
-            }
-
-            _parametersField.text = sbuilder.ToString();
-        }
-
-        private void NextPage()
-        {
-            _parametersField.pageToDisplay++;
-
-            if (_parametersField.pageToDisplay > _maxPages)
-            {
-                _parametersField.pageToDisplay = 1;
-            }
-        }
-
-        private void PreviousPage()
-        {
-            _parametersField.pageToDisplay--;
-
-            if (_parametersField.pageToDisplay < 1)
-            {
-                _parametersField.pageToDisplay = _maxPages;
-            }
-        }
+        _value.text = string.Format(_format, name, current, state);
     }
 }
