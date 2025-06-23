@@ -520,9 +520,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPart: {fileID: 0}
+  <Parts>k__BackingField:
+  - {fileID: 11400000, guid: 21d4d5d7166d2bc4ca94fe32cd45a2e4, type: 2}
   _image: {fileID: 710213937}
-  _types:
-  - {fileID: 21300000, guid: 4d61daa2f493aae6cb766719520b5678, type: 3}
 --- !u!1 &725040754
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,9 +612,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPart: {fileID: 0}
+  <Parts>k__BackingField:
+  - {fileID: 11400000, guid: 7ddda4709e1cf084cb241b097c4ffe2d, type: 2}
   _image: {fileID: 725040756}
-  _types:
-  - {fileID: 21300000, guid: 7b49a4216718035a19ea22b29e8c03d5, type: 3}
 --- !u!1 &1035130193
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,9 +840,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef58186f8a7c880c1b45bcf3b3e65386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPart: {fileID: 0}
+  <Parts>k__BackingField:
+  - {fileID: 11400000, guid: 7895fe040b59ec04f8beb0919bc7285b, type: 2}
   _image: {fileID: 1521534946}
-  _types:
-  - {fileID: 21300000, guid: c4c506421c7005273aac984ba77e206a, type: 3}
 --- !u!1 &1525873200
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,23 +6,28 @@ namespace Rocket
 {
     public class RocketInteractor : MonoBehaviour, IPointerDownHandler
     {
-        public Sprite CurrentSprite => _image.sprite;
-
+        public RocketPartSO CurrentPart;
+        [field: SerializeField] public RocketPartSO[] Parts { get; private set; }
         [SerializeField] private Image _image;
-        [SerializeField] private Sprite[] _types;
 
-        private int _currentType;
+        private int _currentIndex;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            _currentType++;
+            Next();
+        }
 
-            if (_currentType >= _types.Length)
+        private void Next()
+        {
+            _currentIndex++;
+
+            if (_currentIndex >= Parts.Length)
             {
-                _currentType = 0;
+                _currentIndex = 0;
             }
 
-            _image.sprite = _types[_currentType];
+            _image.sprite = Parts[_currentIndex].Sprite;
+            CurrentPart = Parts[_currentIndex];
         }
     }
 }

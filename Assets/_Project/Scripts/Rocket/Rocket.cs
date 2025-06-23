@@ -1,12 +1,10 @@
-using UnityEngine;
-
 namespace Rocket
 {
     public class Rocket
     {
-        public readonly Sprite[] Parts;
+        public readonly RocketPartSO[] Parts;
 
-        public Rocket(Sprite[] parts)
+        public Rocket(RocketPartSO[] parts)
         {
             Parts = parts;
         }

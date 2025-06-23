@@ -11,12 +11,12 @@ namespace Rocket
         {
             if (_parts.Length != model.Parts.Length)
             {
-                throw new ArgumentException("The builder does not match the size of the rocket", nameof(model));
+                throw new ArgumentException("The size of the rocket does not match the model", nameof(model));
             }
 
             for (int i = 0; i < _parts.Length; i++)
             {
-                _parts[i].sprite = model.Parts[i];
+                _parts[i].sprite = model.Parts[i].Sprite;
             }
         }
     }
