@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class DialogueSystem : MonoBehaviour
+public class dialogue : MonoBehaviour
 {
 
     public Image characterImage;
@@ -25,6 +25,7 @@ public class DialogueSystem : MonoBehaviour
     private bool canContinue = false;
     private Coroutine typingCorountine;
 
+    public bool firstDialogueFinsihed;
 
 
     // Start is called before the first frame update
@@ -81,6 +82,7 @@ public class DialogueSystem : MonoBehaviour
     void EndDialogue()
     {
         dialogueText.gameObject.SetActive(false);
-        characterImage.gameObject.SetActive(false); 
+        characterImage.gameObject.SetActive(false);
+        firstDialogueFinsihed = true;
     }
 }
