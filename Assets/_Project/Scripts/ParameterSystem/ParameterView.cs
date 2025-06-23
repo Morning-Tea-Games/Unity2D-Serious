@@ -1,3 +1,4 @@
+using System.Text;
 using Rocket;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace ParameterSystem
         [SerializeField] private TMP_Text _planetField;
         [SerializeField] private Button _replace;
 
+        [SerializeField] private RocketBuilder _builder;
+
         private void OnEnable()
         {
             RocketInteractor.OnChanged += OnInteractorChanged;
@@ -32,7 +35,22 @@ namespace ParameterSystem
 
         private void OnInteractorChanged(RocketPartSO part)
         {
-            _parametersField.text = string.Format(_format, part.Parameters[0].Name, part.Parameters[0].Value, 0f);
+            var rocket = _builder.Build();
+            var parameters = rocket.CalculateParameters();
+
+            if (parameters == null)
+            {
+                return;
+            }
+
+            StringBuilder sbuilder = new();
+
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                sbuilder.AppendLine(string.Format(_format, parameters[i].Name, parameters[i].Value, 0)); //TODO: Заменить 0 на цель для планеты
+            }
+
+            _parametersField.text = sbuilder.ToString();
         }
 
         private void NextPage()

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using ParameterSystem;
 
 namespace Rocket
@@ -14,6 +16,11 @@ namespace Rocket
 
         public Parameter[] CalculateParameters()
         {
+            if (Parts.Any(p => p == null))
+            {
+                return null;
+            }
+
             Dictionary<string, float> aggregated = new();
 
             foreach (var part in Parts)
