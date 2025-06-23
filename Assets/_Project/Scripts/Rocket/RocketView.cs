@@ -11,8 +11,6 @@ namespace Rocket
         {
             if (_parts.Length != model.Parts.Length)
             {
-                Debug.LogError(_parts.Length);
-                Debug.LogError(model.Parts.Length);
                 throw new ArgumentException("The builder does not match the size of the rocket", nameof(model));
             }
 

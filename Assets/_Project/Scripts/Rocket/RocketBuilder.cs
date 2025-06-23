@@ -9,7 +9,6 @@ namespace Rocket
         public Rocket Build()
         {
             var parts = new Sprite[_interactors.Length];
-            Debug.Log(parts.Length);
 
             for (int i = 0; i < _interactors.Length; i++)
             {
