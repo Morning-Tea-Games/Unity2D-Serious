@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,19 +15,31 @@ public class Chooseaplanet : MonoBehaviour
 
     public bool anyPlanetSelected = false;
 
+    private bool planetsSpawned = false;
+
     public PlanetInfo selectedPlanetInfo;
-    // Update is called once per frame
+
+    public Transform cornerTargetPosition;
+
+    public bool Done = false;
     void Update()
     {
         ChooseAPlanet();
+
+        if (Done && !dialogues.dialogueText.gameObject.activeSelf)
+        {
+            dialogues.StartWhileGameDialogue();
+            Done = false; 
+        }
     }
 
     void ChooseAPlanet()
     {
-        if (dialogues.firstDialogueFinsihed == true)
+        if (!planetsSpawned && dialogues.firstDialogueFinsihed == true)
         {
             Planet1.gameObject.SetActive(true);
             Planet2.gameObject.SetActive(true);
+            planetsSpawned = true;
         }
     }
 
@@ -63,8 +76,23 @@ public class Chooseaplanet : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        PlanetInfo1.gameObject.SetActive(false);
-        PlanetInfo2.gameObject.SetActive(false);
+
+        if (selectedPlanetInfo == PlanetInfo1)
+        { PlanetInfo2.gameObject.SetActive(false); }
+        else if (selectedPlanetInfo == PlanetInfo2)
+        { 
+            PlanetInfo1.gameObject.SetActive(false); 
+        }
+
+        if (selectedPlanetInfo != null && cornerTargetPosition != null)
+        {
+            RectTransform selectedRect = selectedPlanetInfo.GetComponent<RectTransform>();
+            selectedRect.SetParent(cornerTargetPosition.parent, false);
+            selectedRect.position = cornerTargetPosition.position;
+            selectedRect.localScale = Vector3.one * 0.5f;
+        }
+
+        Done = true; // turn on the dialogue
     }
 
 

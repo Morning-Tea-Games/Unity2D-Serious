@@ -17,8 +17,6 @@ public class PlanetInfo : MonoBehaviour,IPointerEnterHandler, IPointerExitHandle
     public string nameText;
     public string description;
 
-    public GameObject cornerCopyPrefab; 
-    public Transform cornerTargetPosition;
 
     public bool isSelected = false;
     // Start is called before the first frame update
@@ -30,21 +28,18 @@ public class PlanetInfo : MonoBehaviour,IPointerEnterHandler, IPointerExitHandle
   
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isSelected)
-        {
+
             panel.SetActive(true);
             planetNameText.text = nameText;
             descriptionText.text = description;
-        }
+       
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
 
-        if (!isSelected)
-        {
             panel.SetActive(false);
-        }
+     
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -54,28 +49,13 @@ public class PlanetInfo : MonoBehaviour,IPointerEnterHandler, IPointerExitHandle
         isSelected = true;
         planet.anyPlanetSelected = true;
 
-        Debug.Log("Планет убралась");
+        Debug.Log("Планетa убралась");
 
         panel.SetActive(false);
         transform.localScale *= 1.2f;
 
         planet.DeselectOther(this);
 
-        planet.HidePlanetsAfterDelay(2f);
+        planet.HidePlanetsAfterDelay(3f);
     }
-/*    IEnumerator SelectAndMove()
-    {
-        transform.localScale *= 1.2f;
-        yield return new WaitForSeconds(2f);
-
-        transform.localScale /= 1.2f;
-
-        gameObject.SetActive(false);
-
-        if (cornerCopyPrefab != null && cornerTargetPosition != null)
-        {
-            GameObject copy = Instantiate(cornerCopyPrefab, cornerTargetPosition.position, Quaternion.identity);
-            copy.transform.SetParent(cornerTargetPosition.parent); // Если это UI
-        }
-    }*/
 }

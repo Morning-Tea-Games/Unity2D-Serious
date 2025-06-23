@@ -9,4 +9,12 @@ public class toanotherscene : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    public void LoadGameScene1()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+    public void LoadGameScene2()
+    {
+        SceneManager.LoadScene("Team");
+    }
 }
