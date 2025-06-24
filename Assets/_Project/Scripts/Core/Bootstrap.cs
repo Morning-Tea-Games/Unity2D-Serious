@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Rocket;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -23,7 +24,10 @@ namespace Core
         private void OnBuildButtonClick()
         {
             var rocket = _rocketBuilder.Build();
-            Instantiate(_rocketPrefab).Construct(rocket);
+            var instance = Instantiate(_rocketPrefab);
+            instance.Construct(rocket);
+            DontDestroyOnLoad(instance);
+            SceneManager.LoadScene("Flight");
         }
     }
 }

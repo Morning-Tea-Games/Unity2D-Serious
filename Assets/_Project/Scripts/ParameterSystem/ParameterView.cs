@@ -1,32 +1,54 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ParameterView : MonoBehaviour
+namespace ParameterSystem
 {
-    [SerializeField] private Image _bar;
-    [SerializeField] private TMP_Text _value;
-    [SerializeField] private string _valueFormat;
-
-    public void Display(string name, float current, float target)
+    public class ParameterView : MonoBehaviour
     {
-        string state;
-        float v = current / target * 100f;
-        _bar.fillAmount = current / target;
+        [SerializeField] private Image _bar;
+        [SerializeField] private TMP_Text _value;
+        [SerializeField] private string _valueFormat;
 
-        if (v <= 33f)
+        private string _state;
+
+        public static List<ParameterView> Instances { get; private set; } = new List<ParameterView>();
+
+        public string State
         {
-            state = "плохо";
-        }
-        else if (v > 33f && v <= 66f)
-        {
-            state = "риск";
-        }
-        else
-        {
-            state = "оптимально";
+            get { return _state; }
         }
 
-        _value.text = string.Format(_valueFormat, name, current, state);
+        private void OnEnable()
+        {
+            Instances.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            // Instances.Remove(this);
+        }
+
+        public void Display(string name, float current, float target)
+        {
+            float v = current / target * 100f;
+            _bar.fillAmount = current / target;
+
+            if (v <= 33f)
+            {
+                _state = "плохо";
+            }
+            else if (v > 33f && v <= 66f)
+            {
+                _state = "риск";
+            }
+            else
+            {
+                _state = "оптимально";
+            }
+
+            _value.text = string.Format(_valueFormat, name, current, _state);
+        }
     }
 }
