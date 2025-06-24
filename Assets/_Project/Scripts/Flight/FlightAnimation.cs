@@ -3,6 +3,7 @@ using ParameterSystem;
 using Rocket;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Flight
 {
@@ -12,6 +13,7 @@ namespace Flight
         [SerializeField] private TMP_Text _result;
         private RocketView _rocket;
         private ParameterView[] _parameters;
+        private bool _next;
 
         private void Awake()
         {
@@ -26,6 +28,14 @@ namespace Flight
             StartCoroutine(Move());
         }
 
+        private void Update()
+        {
+            if (_next && Input.anyKeyDown)
+            {
+                SceneManager.LoadScene("StartScene");
+            }
+        }
+
         private IEnumerator Move()
         {
             while (_rocket.transform.position.x <= 12.5f)
@@ -38,6 +48,8 @@ namespace Flight
 
             _result.text = isSuccess ? "Успех!" : "Крушение!";
             _result.gameObject.SetActive(true);
+            Destroy(_rocket.gameObject);
+            _next = true;
         }
 
         private bool CheckParameters()
