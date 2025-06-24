@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class toanotherscene : MonoBehaviour
 {
-  public void LoadGameScene()
+    public void LoadGameScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Talk1");
     }
     public void LoadGameScene1()
     {

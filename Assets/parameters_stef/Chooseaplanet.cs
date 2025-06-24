@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Chooseaplanet : MonoBehaviour
@@ -29,7 +30,7 @@ public class Chooseaplanet : MonoBehaviour
         if (Done && !dialogues.dialogueText.gameObject.activeSelf)
         {
             dialogues.StartWhileGameDialogue();
-            Done = false; 
+            Done = false;
         }
     }
 
@@ -65,6 +66,8 @@ public class Chooseaplanet : MonoBehaviour
             Debug.Log("Selected planet didn't match any known planet info.");
         }
 
+        SceneManager.LoadScene("RocketBuilder");
+
     }
 
     public void HidePlanetsAfterDelay(float delaySeconds)
@@ -80,8 +83,8 @@ public class Chooseaplanet : MonoBehaviour
         if (selectedPlanetInfo == PlanetInfo1)
         { PlanetInfo2.gameObject.SetActive(false); }
         else if (selectedPlanetInfo == PlanetInfo2)
-        { 
-            PlanetInfo1.gameObject.SetActive(false); 
+        {
+            PlanetInfo1.gameObject.SetActive(false);
         }
 
         if (selectedPlanetInfo != null && cornerTargetPosition != null)
