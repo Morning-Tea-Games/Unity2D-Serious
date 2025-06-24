@@ -69,7 +69,7 @@ namespace Flight
                 }
             }
 
-            if (riskCount >= 2)
+            if (riskCount >= 4)
             {
                 return false;
             }
