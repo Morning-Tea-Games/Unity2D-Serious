@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bar: {fileID: 7388175534351595589}
   _value: {fileID: 2612746900716384006}
-  _format: '{0}: {1} ({2})'
+  _valueFormat: '{0}: {1} ({2})'
 --- !u!1 &6037726969908087828
 GameObject:
   m_ObjectHideFlags: 0

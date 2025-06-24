@@ -6,7 +6,7 @@ public class ParameterView : MonoBehaviour
 {
     [SerializeField] private Image _bar;
     [SerializeField] private TMP_Text _value;
-    [SerializeField] private string _format;
+    [SerializeField] private string _valueFormat;
 
     public void Display(string name, float current, float target)
     {
@@ -27,6 +27,6 @@ public class ParameterView : MonoBehaviour
             state = "оптимально";
         }
 
-        _value.text = string.Format(_format, name, current, state);
+        _value.text = string.Format(_valueFormat, name, current, state);
     }
 }
