@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class dialogue : MonoBehaviour
 {
 
-    public Image characterImage;
+    public Image characterImage; 
+    public Image Image;
     public TMP_Text dialogueText;
 
     private int currentLine = 0;
@@ -88,6 +89,7 @@ public class dialogue : MonoBehaviour
     {
         dialogueText.gameObject.SetActive(false);
         characterImage.gameObject.SetActive(false);
+        Image.gameObject.SetActive(false);
         firstDialogueFinsihed = true;
     }
 
@@ -98,6 +100,7 @@ public class dialogue : MonoBehaviour
         dialogueText.text = "";
         characterImage.gameObject.SetActive(true);
         dialogueText.gameObject.SetActive(true);
+        Image.gameObject.SetActive(false);
         ShowLine();
     }
 

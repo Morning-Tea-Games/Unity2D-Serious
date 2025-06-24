@@ -7,14 +7,7 @@ public class toanotherscene : MonoBehaviour
 {
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("Talk1");
+        SceneManager.LoadScene("StartScene");
     }
-    public void LoadGameScene1()
-    {
-        SceneManager.LoadScene("Settings");
-    }
-    public void LoadGameScene2()
-    {
-        SceneManager.LoadScene("Team");
-    }
+ 
 }

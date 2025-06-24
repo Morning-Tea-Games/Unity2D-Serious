@@ -6,22 +6,36 @@ using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
-    public AudioMixer mixer; 
+    public AudioMixer mixer;
 
-    public Slider volumeSlider; 
+    public Slider volumeSlider;
 
-    public string volumeParameter = "Volume"; 
+    public string volumeParameter;
+    public string playerPrefsKey = "volume";
+
 
     void Start()
     {
-        if (volumeSlider != null)
+        if (PlayerPrefs.HasKey(playerPrefsKey))
         {
-            volumeSlider.onValueChanged.AddListener(SetVolume);
+            float savedLinear = PlayerPrefs.GetFloat(playerPrefsKey);
+            volumeSlider.value = savedLinear;
+            SetVolume(savedLinear);
         }
+        else
+        {
+            volumeSlider.value = 0.8f;
+            SetVolume(0.8f);
+        }
+        volumeSlider.onValueChanged.AddListener(SetVolume);
     }
+
 
     public void SetVolume(float value)
     {
-        mixer.SetFloat(volumeParameter, Mathf.Log10(value) * 20);
+        float dB = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f;
+        mixer.SetFloat(volumeParameter, dB);
+
+        PlayerPrefs.SetFloat(playerPrefsKey, value);
     }
 }
